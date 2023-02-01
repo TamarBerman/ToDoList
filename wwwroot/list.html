@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body style="font-family: cursive;">
+    <a href="https://cloudy-resonance-773624.postman.co/workspace/Team-Workspace~523c12bd-02aa-44ff-85b2-e4062a0de44d/collection/24869718-8dd6de24-b916-4a1d-9ce7-8e09ecf82501?action=share&creator=24869718">postman2</a>
+    <a href="https://api.postman.com/collections/24869718-8dd6de24-b916-4a1d-9ce7-8e09ecf82501?access_key=PMAT-01GM0RJC9ZT874ZP4543E6NC9B">postman</a>
+    <nav class="navbar fixed-top navbar-light bg-light d-flex justify-content-start p-0 align-items-center" id ="details">
+        <i class="navbar-brand bi bi-person-circle"></i>
+        <p id="name" class="navbar-brand my-1"> </p>
+        <p class="navbar-brand my-1">|</p>
+        <p id="password" class="navbar-brand my-1"> </p>
+        <p class=" navbar-brand my-1"><button class=" btn btn-secondary btn-lg active" id="disconnection" onclick="disconnection()">Disconnection</button></p>
+      </nav>
+    
+
+
+    <div class="grid w-50 m-auto">
+        <div class="g-col-2 my-5">
+            <div class="text-center">
+                <h1>Task List </h1>
+                <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+                    <input type="text" id="add-name" placeholder="New task">
+                    <input type="submit" value="Add">
+                </form>
+
+                <div id="editForm">
+                    <h3>Edit</h3>
+                    <form action="javascript:void(0);" onsubmit="updateItem()">
+                        <input type="hidden" id="edit-id">
+                        <input type="checkbox" id="edit-isDone">
+                        <input type="text" id="edit-name">
+                        <input type="hidden" id="edit-userid">
+                        <input type="submit" value="Save">
+                        <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+                    </form>
+                </div>
+            </div>
+            <p id="counter"></p>
+
+            <table id="TaskListTbl" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col ">Is done🤔..</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">🖋️</th>
+                        <th scope="col">✖️</th>
+                    </tr>
+                </thead>
+                <tbody id="tasks"></tbody>
+            </table>
+        </div>
+
+        <div id="userList" style="visibility:hidden" class="g-col-2 my-5">
+            <div class="text-center">
+            <h1>Users List</h1>
+            <form action="javascript:void(0);" method="POST" onsubmit="addUser()">
+                <input type="text" id="add-user-name" placeholder="New user name">
+                <input type="text" id="add-user-password" placeholder="New user password">
+                <input type="submit" value="Add">
+            </form>
+        </div>
+
+            <p id="counterUser"></p>
+            <table id="UserListTbl" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Is Admin🤔..</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">✖️</th>
+                    </tr>
+                </thead>
+                <tbody id="users"></tbody>
+        </div>
+    </div>
+
+    <script src="js/app.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        check();
+    </script>
+</body>
+
+</html>

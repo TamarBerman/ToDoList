@@ -1,0 +1,56 @@
+@font-face {
+    font-family: myFont;
+    src: url("C:\Users\Tamar Berman\OneDrive\Documents\PROGRAMING\YEAR_2\CORE\HW core\אחרון עובד\TaskList\wwwroot\fonts\AmaticSC-Bold.ttf");
+  }
+body{
+    font-family: myFont;
+    margin: auto;
+    color: rgb(50, 92, 83);
+}
+input[type='submit'],
+button,
+[aria-label] {
+    cursor: pointer;
+}
+
+#editForm {
+    display: none;
+}
+
+table {
+    font-family: Arial, sans-serif;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #f8f8f8;
+    padding: 5px;
+}
+
+td {
+    border: 1px solid;
+    padding: 5px;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+button, select {
+    text-transform: none;
+    border-radius: 10px;
+    border: solid 0.5px gray;
+    background: none;
+}
+
+/* .gradient-custom { */
+    /* fallback for old browsers */
+    /* background: #6a11cb; */
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)); */
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)) */
+    /* } */
