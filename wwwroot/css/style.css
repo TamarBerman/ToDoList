@@ -1,6 +1,6 @@
 @font-face {
     font-family: myFont;
-    src: url("C:\Users\Tamar Berman\OneDrive\Documents\PROGRAMING\YEAR_2\CORE\HW core\אחרון עובד\TaskList\wwwroot\fonts\AmaticSC-Bold.ttf");
+    src: url("C:\\Users\\Tamar Berman\\OneDrive\\Documents\\PROGRAMING\\YEAR_2\\CORE\\HW core\\אחרון עובד\TaskList\wwwroot\fonts\AmaticSC-Bold.ttf");
   }
 body{
     font-family: myFont;
@@ -43,14 +43,3 @@ button, select {
     border: solid 0.5px gray;
     background: none;
 }
-
-/* .gradient-custom { */
-    /* fallback for old browsers */
-    /* background: #6a11cb; */
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    /* background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)); */
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    /* background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)) */
-    /* } */

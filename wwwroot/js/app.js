@@ -1,14 +1,16 @@
-//    <!-- Log in -->
 const currentUsername = "";
 const currentUserpasswords = "";
 var token = "";
+const uriU = "/User";
+let users = [];
+const uri = "/MyTask";
+let tasks = [];
+const userList = document.getElementById("userList");
 
-const notExist = document.getElementById("notExist");
-
+//    <!-- Log in -->
 const userLogin = () => {
   const username = document.getElementById("user-name");
   const userpasswords = document.getElementById("user-password");
-  // notExist.style.visibility="hidden";
 
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -23,24 +25,22 @@ const userLogin = () => {
     body: raw,
     redirect: "follow",
   };
-  fetch("https://localhost:7208/User/Login", requestOptions)
+  debugger
+  fetch(`${uriU}/Login`, requestOptions)
     .then((response) => response.text())
-    .then((result) => {
+    .then((result)=>{
       if (result.includes("401")) {
         username.value = "";
         userpasswords.value = "";
-        debugger;
-        notExist.style.visibility = "visible";
-        // alert("לא קיים");
+        return Promise.reject("no");
       } else {
+        debugger
         this.token = result.toString();
         sessionStorage.setItem("token", token);
         location.href = "list.html";
       }
     })
-    .catch((error) => {
-      alert("User not found...");
-    });
+    .catch((error) => alert("User not found..."));
 };
 
 // פונקצית בקרה
@@ -55,6 +55,12 @@ function check() {
 function disconnection() {
   token = "";
   location.href = "index.html";
+}
+//פונקצית הצפנה
+function Encryption(password) {
+  var s = "";
+  for (var i = 0; i < password.length; i++) s += "*";
+  return s;
 }
 // הצגת פרטי משתמש
 function updateDetails() {
@@ -71,7 +77,7 @@ function updateDetails() {
     redirect: "follow",
   };
   debugger;
-  fetch("https://localhost:7208/User/GetCurrentUser", requestOptions)
+  fetch(`${uriU}/GetCurrentUser`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
       Dname.innerHTML = result.name;
@@ -81,10 +87,6 @@ function updateDetails() {
 }
 
 //    <!-- User List -->
-const uriU = "/User";
-let users = [];
-const userList = document.getElementById("userList");
-
 function getUsers() {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
@@ -96,31 +98,20 @@ function getUsers() {
     redirect: "follow",
   };
   debugger;
-  fetch("https://localhost:7208/User/GetAll", requestOptions)
-    .then(
-      (response) =>
-        // {
-        // if (response.status == 403) {
-        //   alert("403 Forbidden");
-        //   return;
-        // }
-        response.json()
-      // ;}
-    )
-
+  fetch(`${uriU}/GetAll`, requestOptions)
+    .then((response) => {
+      if (response.status == 403) {
+        return Promise.reject("Unauthorized");
+      } else return response.json();
+    })
     .then((result) => {
-      // if(result==undefined) {
-      //   alert("byebye");
-      //   return;
-      // }
       userList.style.visibility = "visible";
       _displayUsers(result);
     })
     .catch((error) => {
-        if (!(error == "SyntaxError: Unexpected end of JSON input"))
-          alert("unable to get users... \n" + error);
-      }
-    );
+      if (!(error == "Unauthorized"))
+        alert("unable to get users... \n" + error);
+    });
 }
 
 function addUser() {
@@ -203,7 +194,7 @@ function _displayUsers(data) {
     let textNode = document.createTextNode(user.name);
     td2.appendChild(textNode);
     let td3 = tr.insertCell(2);
-    let textNode2 = document.createTextNode(user.password);
+    let textNode2 = document.createTextNode(Encryption(user.password));
     td3.appendChild(textNode2);
 
     let td4 = tr.insertCell(3);
@@ -214,9 +205,6 @@ function _displayUsers(data) {
 }
 
 //    <!-- Task List -->
-const uri = "/MyTask";
-let tasks = [];
-
 function getItems() {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
@@ -227,7 +215,7 @@ function getItems() {
     headers: myHeaders,
     redirect: "follow",
   };
-
+  debugger;
   fetch(uri, requestOptions)
     .then((response) => response.json())
     .then((data) => _displayItems(data))
@@ -288,7 +276,7 @@ function updateItem() {
     name: document.getElementById("edit-name").value.trim(),
     userid: document.getElementById("edit-userid").value,
   };
-  debugger;
+
   fetch(`${uri}/${itemId}`, {
     method: "PUT",
     headers: {
@@ -354,7 +342,6 @@ function _displayItems(data) {
 
     let td4 = tr.insertCell(3);
     td4.appendChild(deleteButton);
-    // }
   });
 
   tasks = data;

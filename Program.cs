@@ -11,12 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-// ---
+
 builder.Services.AddOrders();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-// ==
+
 builder.Services.AddAuthentication();
 
 builder.Services.AddAuthentication(options =>
@@ -36,7 +35,6 @@ builder.Services.AddAuthorization(cfg =>
 }
 );
 
-// builder.Services.AddSwaggerGen();
    builder.Services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Task", Version = "v1" });

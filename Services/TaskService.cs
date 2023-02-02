@@ -29,7 +29,6 @@ namespace TaskList.Services
                 });
             }
         }
-
         private void saveToFile()
         {
             File.WriteAllText(filePath, JsonSerializer.Serialize(tasks));
@@ -52,8 +51,14 @@ namespace TaskList.Services
         public void Add(MyTask task, string token)
         {
             String idFromToken = TokenService.Decode(token);
-            task.Id = tasks.Count() + 1;
-            task.UserId= Convert.ToInt32(idFromToken);
+
+            foreach (MyTask myTask in this.tasks)
+            {
+                if (task.Id < myTask.Id)
+                    task.Id = myTask.Id;
+            }
+            task.Id++;
+            task.UserId = Convert.ToInt32(idFromToken);
             tasks.Add(task);
             saveToFile();
         }

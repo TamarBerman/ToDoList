@@ -24,7 +24,6 @@ namespace TaskList.Controllers
         public ActionResult<List<MyTask>> GetAll()
         {
             var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
-            Console.WriteLine(token);
             return TaskService.GetAll(token);
         }
 

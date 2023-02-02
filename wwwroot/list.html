@@ -12,20 +12,35 @@
 </head>
 
 <body style="font-family: cursive;">
-    <a href="https://cloudy-resonance-773624.postman.co/workspace/Team-Workspace~523c12bd-02aa-44ff-85b2-e4062a0de44d/collection/24869718-8dd6de24-b916-4a1d-9ce7-8e09ecf82501?action=share&creator=24869718">postman2</a>
-    <a href="https://api.postman.com/collections/24869718-8dd6de24-b916-4a1d-9ce7-8e09ecf82501?access_key=PMAT-01GM0RJC9ZT874ZP4543E6NC9B">postman</a>
-    <nav class="navbar fixed-top navbar-light bg-light d-flex justify-content-start p-0 align-items-center" id ="details">
+   
+    <nav class="navbar fixed-top navbar-light bg-light d-flex justify-content-start p-0 align-items-center"
+        id="details">
         <i class="navbar-brand bi bi-person-circle"></i>
         <p id="name" class="navbar-brand my-1"> </p>
         <p class="navbar-brand my-1">|</p>
         <p id="password" class="navbar-brand my-1"> </p>
-        <p class=" navbar-brand my-1"><button class=" btn btn-secondary btn-lg active" id="disconnection" onclick="disconnection()">Disconnection</button></p>
-      </nav>
-    
+        <p class=" navbar-brand my-1"><button class=" btn btn-secondary btn-lg active" id="disconnection"
+                onclick="disconnection()">LogOut</button></p>
+        
+            <div class="postman-run-button" data-postman-action="collection/fork"
+            data-postman-var-1="24869718-93f70f77-8343-446c-8430-7fbec30d3459"
+            data-postman-collection-url="entityId=24869718-93f70f77-8343-446c-8430-7fbec30d3459&entityType=collection&workspaceId=81176955-2b9a-46df-b810-9c4f013f6245">
+        </div>
+        <script type="text/javascript">
+            (function (p, o, s, t, m, a, n) {
+                !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+                !o.getElementById(s + t) && o.getElementsByTagName("head")[0].appendChild((
+                    (n = o.createElement("script")),
+                    (n.id = s + t), (n.async = 1), (n.src = m), n
+                ));
+            }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+        </script>
+    </nav>
 
 
-    <div class="grid w-50 m-auto">
-        <div class="g-col-2 my-5">
+
+    <div class="grid w-50 m-auto ">
+        <div class="g-col-2 " style="margin-top:100px;">
             <div class="text-center">
                 <h1>Task List </h1>
                 <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
@@ -33,9 +48,9 @@
                     <input type="submit" value="Add">
                 </form>
 
-                <div id="editForm">
-                    <h3>Edit</h3>
+                <div id="editForm" class="mt-3">
                     <form action="javascript:void(0);" onsubmit="updateItem()">
+                        <p style="display: inline-block;" class="font-weight-bold">Edit: </p>
                         <input type="hidden" id="edit-id">
                         <input type="checkbox" id="edit-isDone">
                         <input type="text" id="edit-name">
@@ -62,13 +77,13 @@
 
         <div id="userList" style="visibility:hidden" class="g-col-2 my-5">
             <div class="text-center">
-            <h1>Users List</h1>
-            <form action="javascript:void(0);" method="POST" onsubmit="addUser()">
-                <input type="text" id="add-user-name" placeholder="New user name">
-                <input type="text" id="add-user-password" placeholder="New user password">
-                <input type="submit" value="Add">
-            </form>
-        </div>
+                <h1>Users List</h1>
+                <form action="javascript:void(0);" method="POST" onsubmit="addUser()">
+                    <input type="text" id="add-user-name" placeholder="New user name">
+                    <input type="text" id="add-user-password" placeholder="New user password">
+                    <input type="submit" value="Add">
+                </form>
+            </div>
 
             <p id="counterUser"></p>
             <table id="UserListTbl" class="table">
@@ -83,6 +98,9 @@
                 <tbody id="users"></tbody>
         </div>
     </div>
+
+
+
 
     <script src="js/app.js" asp-append-version="true"></script>
     <script type="text/javascript">

@@ -32,7 +32,6 @@ namespace TaskList.Services
 
             }
         }
-
         private void saveToFile()
         {
             File.WriteAllText(filePath, JsonSerializer.Serialize(users));
@@ -49,7 +48,12 @@ namespace TaskList.Services
         }
         public void Add(User user)
         {
-            user.Id = users.Count() + 1;
+            foreach (User myUser in this.users)
+            {
+                if (user.Id < myUser.Id)
+                    user.Id = myUser.Id;
+            }
+            user.Id ++;
             users.Add(user);
             saveToFile();
         }
