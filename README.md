@@ -12,4 +12,3 @@
 
 ## Developed by: ##
     Tamar Berman | Tamar3242643@gmail.com
-    Tamy Pur | tp0583208434@gmail.com
