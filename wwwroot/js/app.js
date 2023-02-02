@@ -32,7 +32,7 @@ const userLogin = () => {
       if (result.includes("401")) {
         username.value = "";
         userpasswords.value = "";
-        return Promise.reject("no");
+        return Promise.reject("User not found...");
       } else {
         debugger
         this.token = result.toString();
@@ -40,7 +40,7 @@ const userLogin = () => {
         location.href = "list.html";
       }
     })
-    .catch((error) => alert("User not found..."));
+    .catch((error) => alert(error));
 };
 
 // פונקצית בקרה
